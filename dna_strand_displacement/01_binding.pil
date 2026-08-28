@@ -1,0 +1,30 @@
+# Domain-level DNA experiment #1
+#
+# Two complementary DNA strands.
+#
+# We are NOT specifying the reaction.
+# Peppercorn should discover the possible interactions itself.
+
+
+# Short domain.
+# Later this kind of short domain can act as a toehold.
+
+length t = 5
+
+# Longer recognition domain.
+length a = 15
+
+# Strand A, written from 5' to 3'.
+#
+# 5' --- t --- a --- 3'
+
+A = t a @initial 10 nM
+
+# Complementary strand, also written from 5' to 3'.
+#
+# Because DNA strands are antiparallel,
+# the complement has the reverse domain order:
+#
+# 5' --- a* --- t* --- 3'
+
+B = a* t* @initial 10 nM 

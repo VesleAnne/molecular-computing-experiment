@@ -1,0 +1,51 @@
+# First toehold-mediated strand displacement experiment.
+#
+# Based on the Zhang & Winfree 2009 system included
+# in Peppercorn's own case studies.
+#
+# X = invading input strand
+# S = substrate / gate
+# Y = displaced output strand
+# I, J = intermediate complexes
+# L = final complex after displacement
+
+
+# Long domains
+length a = 16
+length br = 7
+length b = 7
+length c = 10
+
+# Short domains
+length b6 = 6
+
+# The toehold.
+# We start with a 5 nt toehold.
+length ct = 5
+
+
+# Invading input strand.
+X = b6 br b ct @initial 10 nM
+
+
+# Substrate / gate.
+# Part of the complex is paired,
+# while a complementary toehold remains available
+# for the invading strand.
+S = a b6( br( b( + c* ct* ) ) ) @initial 10 nM
+
+
+# Known intermediate states.
+# Zero concentration means they are not initially present,
+# but we give Peppercorn readable names for them.
+I = a b6( br( b( + br b ct( + c* ) ) ) ) @initial 0 nM
+
+J = a b6( br b + br( b( ct( + c* ) ) ) ) @initial 0 nM
+
+
+# Output strand that should eventually be released.
+Y = a b6 br b @initial 0 nM
+
+
+# Final displaced complex.
+L = b6( br( b( ct( + c* ) ) ) ) @initial 0 nM
