@@ -114,10 +114,9 @@ X1=1, X2=1
 ```
 
 For every experiment:
-```text
-[Y](0) = 0
-```
----
+
+$[Y]$ $(0)$ = $0$
+
 
 ## Result
 
@@ -130,9 +129,9 @@ $$
 is zero.
 
 Therefore:
-```text
-[Y](0) = 0
-```
+
+$[Y]$ $(0)$ = $0$
+
 for the entire simulation.
 
 Only when:
