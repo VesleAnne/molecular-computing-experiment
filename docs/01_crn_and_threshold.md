@@ -164,7 +164,7 @@ Unlike a digital Boolean gate, the molecular output is not produced instantaneou
 
 The output is a trajectory:
 
-$[Y]$$(t)$
+$[Y]$ $(t)$
 
 rather than an immediate Boolean value.
 
@@ -186,7 +186,7 @@ The first experiment artificially restricted molecular inputs to exactly `0` and
 
 Real chemistry is continuous, so the next experiment fixed:
 
-$[X_1]$$(0)$ = $1$
+$[X_1]$ $(0)$ = $1$
 
 and tested several initial concentrations of `X2`:
 
