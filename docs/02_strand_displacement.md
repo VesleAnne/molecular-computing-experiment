@@ -510,9 +510,7 @@ $$
 
 At the beginning:
 
-$$
-[S](0)=[X](0)=10\ \mathrm{nM}
-$$
+$[S]$ $(0)=[X]$ $(0)=10\ \mathrm{nM}$
 
 so:
 
