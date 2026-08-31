@@ -2,7 +2,7 @@
 
 ## Objective
 
-The goal of this experiment was to move beyond simple DNA hybridization and simulate a genuine **toehold-mediated strand displacement reaction**.
+The goal of this experiment was to simulate a genuine **toehold-mediated strand displacement reaction**.
 
 In the previous experiment, two complementary strands simply associated:
 
@@ -21,11 +21,6 @@ The system used here is based on a strand-displacement design from the Peppercor
 
 The original paper experimentally studied how short DNA toeholds control strand-displacement kinetics and modeled these processes using a multi-step kinetic description.
 
-Our experiment is therefore best described as:
-
-> **A domain-level computational simulation of a Zhang & Winfree-style strand-displacement system, not a direct reproduction of the original wet-lab experiment.**
-
----
 
 # System Design
 
@@ -39,25 +34,15 @@ The system contains five relevant molecular species:
 
 Initial concentrations were:
 
-$$
-[X](0) = 10\ \mathrm{nM}
-$$
+$[X]$ $(0) = 10\ \mathrm{nM}$
 
-$$
-[S](0) = 10\ \mathrm{nM}
-$$
+$[S]$ $(0) = 10\ \mathrm{nM}$
 
-$$
-[Y](0) = 0
-$$
+$[Y] $(0) = 0$
 
-$$
-[L](0) = 0
-$$
+$[L]$ $(0) = 0$
 
-$$
-[e2](0) = 0
-$$
+$[e2]$ $(0) = 0$
 
 The DNA system was specified at the **domain level**, rather than using explicit nucleotide sequences.
 
