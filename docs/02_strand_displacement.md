@@ -579,8 +579,7 @@ $$
 
 The quasi-steady-state approximation predicts:
 
-$$
-[e2]
+$[e2]$ $$ 
 \approx
 \frac{0.0015\times3.4\times3.4}
 {38.4318}
@@ -588,9 +587,7 @@ $$
 
 or approximately:
 
-$$
-[e2] \approx 4.5\times10^{-4}\ \mathrm{nM}
-$$
+$[e2]$ $\approx 4.5\times10^{-4}\ \mathrm{nM}$
 
 which is consistent with the simulated trajectory.
 
