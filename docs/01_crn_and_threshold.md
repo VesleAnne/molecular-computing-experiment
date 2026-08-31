@@ -146,8 +146,7 @@ does the output concentration increase.
 
 For these initial conditions and $k=1$, the analytical solution is:
 
-$[Y]$ $(t)$ = $$ \frac{t}{1+t}
-$$
+$[Y]$ $(t)$ = $\frac{t}{1+t}$
 
 so, for example:
 
