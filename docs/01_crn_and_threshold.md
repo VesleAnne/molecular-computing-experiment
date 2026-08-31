@@ -114,11 +114,11 @@ X1=1, X2=1
 ```
 
 For every experiment:
-
+```text
 $$
 [Y](0) = 0
 $$
-
+```
 ---
 
 ## Result
