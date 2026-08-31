@@ -476,13 +476,13 @@ This separation of timescales explains why `e2` remains at very low concentratio
 Because `e2` forms slowly but disappears rapidly, it can approximately satisfy a **quasi-steady-state condition**:
 
 $$
-\frac{d[e2]}{dt} \approx 0
+\frac{d [e2] }{dt} \approx 0
 $$
 
 The full intermediate equation is:
 
 $$
-\frac{d[e2]}{dt}
+\frac{d [e2] }{dt}
 =
 k_{\text{bind}}[S][X]
 -
