@@ -210,7 +210,7 @@ $$
 
 the smaller amount of the two reactants limits the total amount of output.
 
-Since $[X_1](0)=1$, `X2` is the limiting reagent for all values below 1.
+Since $[X_1]$ $(0)=1$, `X2` is the limiting reagent for all values below 1.
 
 Therefore, approximately:
 
