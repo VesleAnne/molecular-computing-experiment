@@ -131,9 +131,7 @@ is zero.
 
 Therefore:
 
-$$
-[Y](t) = 0
-$$
+$ [Y](t) = 0 $
 
 for the entire simulation.
 
