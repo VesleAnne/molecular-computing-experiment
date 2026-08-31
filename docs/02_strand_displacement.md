@@ -12,18 +12,18 @@ $$
 
 This experiment introduces a more computationally useful mechanism:
 
-1. an input strand binds to an exposed **toehold**,
-2. a transient multi-strand complex is formed,
-3. branch migration occurs,
+1. an input strand binds to an exposed **toehold**;
+2. a transient multi-strand complex is formed;
+3. branch migration occurs;
 4. a previously bound strand is displaced and released as a free molecular output.
 
-The system used here is based on a strand-displacement design from the Peppercorn case studies, which in turn references the experimental work of **David Yu Zhang and Erik Winfree (2009), *Control of DNA Strand Displacement Kinetics Using Toehold Exchange***.
+The system used here is based on a strand-displacement design from the Peppercorn case studies, which in turn references the experimental work of **David Yu Zhang and Erik Winfree (2009), _Control of DNA Strand Displacement Kinetics Using Toehold Exchange_**.
 
 The original paper experimentally studied how short DNA toeholds control strand-displacement kinetics and modeled these processes using a multi-step kinetic description.
 
 Our experiment is therefore best described as:
 
-> **a domain-level computational reimplementation/simulation of a Zhang & Winfree-style strand-displacement system, not a direct reproduction of the original wet-lab experiment.**
+> **A domain-level computational simulation of a Zhang & Winfree-style strand-displacement system, not a direct reproduction of the original wet-lab experiment.**
 
 ---
 
@@ -31,32 +31,32 @@ Our experiment is therefore best described as:
 
 The system contains five relevant molecular species:
 
-* `X` — invading input strand
-* `S` — substrate / gate complex
-* `e2` — transient strand-displacement intermediate
-* `Y` — released output strand
-* `L` — final complex after successful displacement
+- `X` — invading input strand
+- `S` — substrate / gate complex
+- `e2` — transient strand-displacement intermediate
+- `Y` — released output strand
+- `L` — final complex after successful displacement
 
 Initial concentrations were:
 
 $$
-[X]_0 = 10\ \text{nM}
+[X](0) = 10\ \mathrm{nM}
 $$
 
 $$
-[S]_0 = 10\ \text{nM}
+[S](0) = 10\ \mathrm{nM}
 $$
 
 $$
-[Y]_0 = 0
+[Y](0) = 0
 $$
 
 $$
-[L]_0 = 0
+[L](0) = 0
 $$
 
 $$
-[e2]_0 = 0
+[e2](0) = 0
 $$
 
 The DNA system was specified at the **domain level**, rather than using explicit nucleotide sequences.
@@ -64,12 +64,12 @@ The DNA system was specified at the **domain level**, rather than using explicit
 For example, the toehold domain had length:
 
 $$
-|ct| = 5\ \text{nt}
+|ct| = 5\ \mathrm{nt}
 $$
 
-while the other recognition / migration domains were longer.
+while the other recognition and migration domains were longer.
 
-At this stage, domains such as `ct`, `b`, `br`, etc. represent logical DNA sequence regions, not concrete sequences such as:
+At this stage, domains such as `ct`, `b`, `br`, and `b6` represent logical DNA sequence regions, not concrete nucleotide sequences such as:
 
 ```text
 ACTGCC...
@@ -96,21 +96,15 @@ $$
 with predicted domain-level rate constants:
 
 $$
-k_{\text{bind}}
-=
-0.0015\ \text{nM}^{-1}\text{s}^{-1}
+k_{\text{bind}} = 0.0015\ \mathrm{nM}^{-1}\mathrm{s}^{-1}
 $$
 
 $$
-k_{\text{open}}
-=
-21.7651\ \text{s}^{-1}
+k_{\text{open}} = 21.7651\ \mathrm{s}^{-1}
 $$
 
 $$
-k_{\text{branch}}
-=
-16.6667\ \text{s}^{-1}
+k_{\text{branch}} = 16.6667\ \mathrm{s}^{-1}
 $$
 
 Peppercorn classified the reactions as:
@@ -138,33 +132,25 @@ $$
 This is a bimolecular reaction, so under mass-action kinetics:
 
 $$
-r_{\text{bind}}
-=
-k_{\text{bind}}[S][X].
+r_{\text{bind}} = k_{\text{bind}}[S][X]
 $$
 
 At the beginning of the experiment:
 
 $$
-[S]=[X]=10\ \text{nM}
+[S](0) = [X](0) = 10\ \mathrm{nM}
 $$
 
 therefore:
 
 $$
-r_{\text{bind}}(0)
-=
-0.0015
-\times
-10
-\times
-10
+r_{\text{bind}}(0) = 0.0015 \times 10 \times 10
 $$
 
+and:
+
 $$
-\boxed{
-r_{\text{bind}}(0)=0.15\ \text{nM/s}
-}
+\boxed{r_{\text{bind}}(0) = 0.15\ \mathrm{nM/s}}
 $$
 
 The product `e2` is a transient multi-strand complex.
@@ -183,15 +169,13 @@ $$
 e2 \rightarrow S + X
 $$
 
-with
+with:
 
 $$
-k_{\text{open}}
-=
-21.7651\ \text{s}^{-1}.
+k_{\text{open}} = 21.7651\ \mathrm{s}^{-1}
 $$
 
-In this case no computation is completed and no output is released.
+In this case, no computation is completed and no output is released.
 
 The system returns to its original state:
 
@@ -218,9 +202,7 @@ $$
 with:
 
 $$
-k_{\text{branch}}
-=
-16.6667\ \text{s}^{-1}.
+k_{\text{branch}} = 16.6667\ \mathrm{s}^{-1}
 $$
 
 Conceptually:
@@ -245,7 +227,7 @@ The released `Y` strand could, in principle, become the input to another downstr
 
 # Reaction Network
 
-The complete effective mechanism is therefore:
+The complete effective mechanism is:
 
 ```text
                      k_open
@@ -269,8 +251,8 @@ was essentially the entire reaction.
 
 Here, binding only creates an intermediate state. The system must then choose between:
 
-* returning to the initial state, or
-* completing strand displacement and releasing output.
+- returning to the initial state;
+- completing strand displacement and releasing output.
 
 ---
 
@@ -281,26 +263,19 @@ Because the two unimolecular reactions compete from the same transient state `e2
 For two competing exponential processes:
 
 $$
-P_{\text{success}}
-=
-\frac{k_{\text{branch}}}
-{k_{\text{branch}}+k_{\text{open}}}.
+P_{\text{success}} = \frac{k_{\text{branch}}}{k_{\text{branch}} + k_{\text{open}}}
 $$
 
 Substituting the Peppercorn rates:
 
 $$
-P_{\text{success}}
-=
-\frac{16.6667}
-{16.6667+21.7651}
+P_{\text{success}} = \frac{16.6667}{16.6667 + 21.7651}
 $$
 
+Therefore:
+
 $$
-\boxed{
-P_{\text{success}}
-\approx0.434
-}
+\boxed{P_{\text{success}} \approx 0.434}
 $$
 
 So approximately:
@@ -320,7 +295,7 @@ $$
 return to:
 
 $$
-S+X.
+S + X
 $$
 
 This does **not** mean that the final strand-displacement yield is limited to 43%.
@@ -355,82 +330,63 @@ Repeated attempts allow the reaction to continue toward product formation.
 A simple approximation for the effective successful bimolecular reaction is:
 
 $$
-S + X \rightarrow Y + L.
+S + X \rightarrow Y + L
 $$
 
-If every binding event succeeds with probability \(P_{\text{success}}\), then an approximate effective rate constant is:
+If every binding event succeeds with probability $P_{\text{success}}$, then an approximate effective rate constant is:
 
 $$
-k_{\text{eff}}
-\approx
-k_{\text{bind}}
-P_{\text{success}}.
+k_{\text{eff}} \approx k_{\text{bind}} P_{\text{success}}
 $$
 
 Thus:
 
 $$
-k_{\text{eff}}
-\approx
-0.0015\times0.43367
+k_{\text{eff}} \approx 0.0015 \times 0.43367
 $$
 
+and:
+
 $$
-\boxed{
-k_{\text{eff}}
-\approx
-6.51\times10^{-4}
-\ \text{nM}^{-1}\text{s}^{-1}
-}
+\boxed{k_{\text{eff}} \approx 6.51\times10^{-4}\ \mathrm{nM}^{-1}\mathrm{s}^{-1}}
 $$
 
-This simplified effective model turns out to approximate the full Peppercorn/Pilsimulator trajectory surprisingly well.
+This simplified effective model approximates the full Peppercorn/Pilsimulator trajectory surprisingly well.
 
 For equal initial concentrations:
 
 $$
-[X]_0=[S]_0=C_0=10\ \text{nM},
+[X](0) = [S](0) = C_0 = 10\ \mathrm{nM}
 $$
 
 an irreversible second-order approximation gives:
 
 $$
-[X](t)
-\approx
-[S](t)
-\approx
-\frac{C_0}
-{1+k_{\text{eff}}C_0t}
+[X](t) \approx [S](t) \approx \frac{C_0}{1+k_{\text{eff}}C_0t}
 $$
 
 and therefore:
 
 $$
-[Y](t)
-\approx
-C_0
--
-\frac{C_0}
-{1+k_{\text{eff}}C_0t}.
+[Y](t) \approx C_0 - \frac{C_0}{1+k_{\text{eff}}C_0t}
 $$
 
 At:
 
 $$
-t=300\ \text{s}
+t = 300\ \mathrm{s}
 $$
 
 this predicts approximately:
 
 $$
-[Y](300)
-\approx6.61\ \text{nM}.
+[Y](300) \approx 6.61\ \mathrm{nM}
 $$
 
 The Pilsimulator result was approximately:
 
 $$
-[Y](300)\approx6.6\ \text{nM},
+[Y](300) \approx 6.6\ \mathrm{nM}
 $$
 
 showing close agreement between the simple effective model and the explicitly enumerated reaction network.
@@ -443,30 +399,16 @@ Peppercorn generated the reaction network, and Pilsimulator numerically integrat
 
 The simulation tracked:
 
-$$
-[X](t)
-$$
-
-$$
-[S](t)
-$$
-
-$$
-[e2](t)
-$$
-
-$$
-[Y](t)
-$$
-
-$$
-[L](t).
-$$
+- $[X](t)$ — invading input strand
+- $[S](t)$ — substrate / gate
+- $[e2](t)$ — transient intermediate
+- $[Y](t)$ — released output strand
+- $[L](t)$ — final displaced complex
 
 The simulation interval was:
 
 $$
-0 \leq t \leq 300\ \text{s}.
+0 \leq t \leq 300\ \mathrm{s}
 $$
 
 ---
@@ -476,7 +418,7 @@ $$
 The simulation showed that:
 
 $$
-[X](t)\approx[S](t)
+[X](t) \approx [S](t)
 $$
 
 because each successful strand displacement consumes one `X` and one `S`.
@@ -484,46 +426,40 @@ because each successful strand displacement consumes one `X` and one `S`.
 Similarly:
 
 $$
-[Y](t)\approx[L](t)
+[Y](t) \approx [L](t)
 $$
 
 because each successful strand-displacement event produces one `Y` and one `L`.
 
-At approximately 300 seconds:
+At approximately $t=300\ \mathrm{s}$:
 
 $$
-[X]\approx[S]\approx3.4\ \text{nM}
+[X] \approx [S] \approx 3.4\ \mathrm{nM}
 $$
 
 and:
 
 $$
-[Y]\approx[L]\approx6.6\ \text{nM}.
+[Y] \approx [L] \approx 6.6\ \mathrm{nM}
 $$
 
 This is consistent with conservation of material:
 
 $$
-[X](t)+[Y](t)\approx10\ \text{nM}
+[X](t) + [Y](t) \approx 10\ \mathrm{nM}
 $$
 
 and:
 
 $$
-[S](t)+[L](t)\approx10\ \text{nM}.
+[S](t) + [L](t) \approx 10\ \mathrm{nM}
 $$
 
 ---
 
 ## Figure 1 — Full Strand-Displacement Dynamics
 
-![X, S, e2, Y and L concentrations over 300 s](image.png)
-
-```text
-[FIGURE: X, S, e2, Y and L concentrations over 300 s]
-```
-
-### Interpretation
+![X, S, e2, Y and L concentrations over 300 s](../figures/02_displacement.png)
 
 The input species `X` and gate species `S` decrease over time.
 
@@ -535,68 +471,54 @@ The transient intermediate `e2` appears to remain at approximately zero on this 
 
 # Transient Intermediate `e2`
 
-Peppercorn classified:
-
-```text
-e2
-```
-
-as a **transient complex** rather than a resting complex.
+Peppercorn classified `e2` as a **transient complex** rather than a resting complex.
 
 This means that once it forms, it rapidly exits through either:
 
 $$
-e2\rightarrow S+X
+e2 \rightarrow S + X
 $$
 
 or:
 
 $$
-e2\rightarrow Y+L.
+e2 \rightarrow Y + L
 $$
 
 The total first-order rate of leaving `e2` is:
 
 $$
-k_{\text{out}}
-=
-k_{\text{open}}
-+
-k_{\text{branch}}
+k_{\text{out}} = k_{\text{open}} + k_{\text{branch}}
 $$
 
-$$
-k_{\text{out}}
-=
-21.7651+16.6667
-$$
+Therefore:
 
 $$
-\boxed{
-k_{\text{out}}
-=
-38.4318\ \text{s}^{-1}
-}
+k_{\text{out}} = 21.7651 + 16.6667
+$$
+
+and:
+
+$$
+\boxed{k_{\text{out}} = 38.4318\ \mathrm{s}^{-1}}
 $$
 
 The corresponding characteristic timescale is approximately:
 
 $$
-\tau
-\sim
-\frac{1}{k_{\text{out}}}
+\tau \sim \frac{1}{k_{\text{out}}}
 $$
 
-$$
-\tau
-\approx
-\frac{1}{38.4318}
-$$
+so:
 
 $$
-\boxed{
-\tau\approx0.026\ \text{s}
-}
+\tau \approx \frac{1}{38.4318}
+$$
+
+and:
+
+$$
+\boxed{\tau \approx 0.026\ \mathrm{s}}
 $$
 
 Thus the lifetime of the intermediate is on the order of tens of milliseconds, while the overall strand-displacement process evolves over hundreds of seconds.
@@ -610,7 +532,7 @@ This separation of timescales explains why `e2` remains at very low concentratio
 Because `e2` forms slowly but disappears rapidly, it can approximately satisfy a **quasi-steady-state condition**:
 
 $$
-\frac{d[e2]}{dt}\approx0.
+\frac{d[e2]}{dt} \approx 0
 $$
 
 The full intermediate equation is:
@@ -620,7 +542,7 @@ $$
 =
 k_{\text{bind}}[S][X]
 -
-(k_{\text{open}}+k_{\text{branch}})[e2].
+(k_{\text{open}}+k_{\text{branch}})[e2]
 $$
 
 Setting the derivative approximately to zero gives:
@@ -628,7 +550,7 @@ Setting the derivative approximately to zero gives:
 $$
 k_{\text{bind}}[S][X]
 \approx
-(k_{\text{open}}+k_{\text{branch}})[e2].
+(k_{\text{open}}+k_{\text{branch}})[e2]
 $$
 
 Therefore:
@@ -637,18 +559,15 @@ $$
 \boxed{
 [e2]
 \approx
-\frac{
-k_{\text{bind}}[S][X]
-}{
-k_{\text{open}}+k_{\text{branch}}
-}
+\frac{k_{\text{bind}}[S][X]}
+{k_{\text{open}}+k_{\text{branch}}}
 }
 $$
 
 At the beginning:
 
 $$
-[S]=[X]=10\ \text{nM}
+[S](0)=[X](0)=10\ \mathrm{nM}
 $$
 
 so:
@@ -656,23 +575,20 @@ so:
 $$
 [e2]
 \approx
-\frac{
-0.0015\times10\times10
-}{
-38.4318
-}
+\frac{0.0015\times10\times10}
+{38.4318}
 $$
 
+and:
+
 $$
-\boxed{
-[e2]\approx0.00390\ \text{nM}
-}
+\boxed{[e2] \approx 0.00390\ \mathrm{nM}}
 $$
 
 The dedicated Pilsimulator plot showed a peak of approximately:
 
 $$
-0.0039\ \text{nM},
+0.0039\ \mathrm{nM}
 $$
 
 which closely matches this analytical estimate.
@@ -681,15 +597,12 @@ which closely matches this analytical estimate.
 
 ## Figure 2 — Transient Intermediate `e2`
 
-![Transient e2 concentration over 300 s](image-1.png)
-```text
-[FIGURE: transient e2 concentration over 300 s]
-```
+![Transient e2 concentration over 300 s](../figures/02_displacement_e2.png)
 
 The intermediate concentration rapidly rises to approximately:
 
 $$
-0.0039\ \text{nM}
+0.0039\ \mathrm{nM}
 $$
 
 and then slowly decreases.
@@ -699,7 +612,7 @@ The slow decline is not caused by a changing molecular mechanism.
 Instead:
 
 $$
-[e2]\propto[X][S].
+[e2] \propto [X][S]
 $$
 
 As `X` and `S` are gradually consumed:
@@ -707,6 +620,8 @@ As `X` and `S` are gradually consumed:
 $$
 [X]\downarrow
 $$
+
+and:
 
 $$
 [S]\downarrow
@@ -717,7 +632,7 @@ the rate of forming new `e2` complexes also decreases.
 For example, near the end of the simulation:
 
 $$
-[X]\approx[S]\approx3.4\ \text{nM}.
+[X] \approx [S] \approx 3.4\ \mathrm{nM}
 $$
 
 The quasi-steady-state approximation predicts:
@@ -725,15 +640,14 @@ The quasi-steady-state approximation predicts:
 $$
 [e2]
 \approx
-\frac{
-0.0015\times3.4\times3.4
-}{
-38.4318
-}
+\frac{0.0015\times3.4\times3.4}
+{38.4318}
 $$
 
+or approximately:
+
 $$
-[e2]\approx4.5\times10^{-4}\ \text{nM},
+[e2] \approx 4.5\times10^{-4}\ \mathrm{nM}
 $$
 
 which is consistent with the simulated trajectory.
@@ -758,15 +672,15 @@ b6
 
 rather than actual nucleotide sequences.
 
-Therefore the simulation captures structural reaction semantics, but not all sequence-specific effects.
+Therefore, the simulation captures structural reaction semantics but not all sequence-specific effects.
 
 The model does not yet explicitly evaluate phenomena such as:
 
-* sequence-specific hybridization energies,
-* hairpin formation,
-* unintended sequence-level crosstalk,
-* mismatch effects,
-* salt-dependent sequence thermodynamics.
+- sequence-specific hybridization energies
+- hairpin formation
+- unintended sequence-level crosstalk
+- mismatch effects
+- salt-dependent sequence thermodynamics
 
 ---
 
@@ -776,7 +690,7 @@ The rate constants used in this experiment were generated by Peppercorn's domain
 
 They should therefore be interpreted as **model predictions**, not as experimentally measured kinetic constants for a particular set of oligonucleotide sequences.
 
-Peppercorn itself notes that its current domain-level rates primarily depend on structural/domain properties such as domain length rather than full nucleotide sequence.
+At this stage, we are studying domain-level behavior rather than validating a concrete nucleotide-level implementation.
 
 ---
 
@@ -787,16 +701,14 @@ The simulation assumes well-mixed mass-action kinetics.
 For example:
 
 $$
-r_{\text{bind}}
-=
-k_{\text{bind}}[S][X].
+r_{\text{bind}} = k_{\text{bind}}[S][X]
 $$
 
 This assumes that:
 
-* molecules are uniformly mixed,
-* diffusion does not create important spatial gradients,
-* concentrations are large enough for a deterministic ODE description to be reasonable.
+- molecules are uniformly mixed;
+- diffusion does not create important spatial gradients;
+- concentrations are large enough for a deterministic ODE description to be reasonable.
 
 ---
 
@@ -804,7 +716,7 @@ This assumes that:
 
 Only reactions discovered by the domain-level enumerator contribute to the simulated kinetics.
 
-Sequence-specific undesired interactions that would only emerge after choosing concrete DNA sequences are not yet represented.
+Sequence-specific undesired interactions that would emerge only after choosing concrete DNA sequences are not yet represented.
 
 ---
 
@@ -814,7 +726,7 @@ Pilsimulator integrates deterministic concentration trajectories.
 
 Individual molecular reaction events are stochastic, but fluctuations are averaged out in this model.
 
-For sufficiently small volumes or small molecule counts, a stochastic simulator could become more appropriate.
+For sufficiently small reaction volumes or molecule counts, a stochastic simulator could become more appropriate.
 
 ---
 
@@ -827,15 +739,13 @@ In the previous experiment, binding itself produced the final complex.
 In strand displacement:
 
 $$
-\text{binding}
-\neq
-\text{successful output}.
+\text{binding} \neq \text{successful output}
 $$
 
 Binding creates a transient state from which the system may either:
 
-* return to the initial state, or
-* proceed to the computationally useful output.
+- return to the initial state;
+- proceed to the computationally useful output.
 
 ---
 
@@ -844,18 +754,18 @@ Binding creates a transient state from which the system may either:
 The same intermediate can have multiple possible outcomes:
 
 $$
-e2\rightarrow S+X
+e2 \rightarrow S + X
 $$
 
 or:
 
 $$
-e2\rightarrow Y+L.
+e2 \rightarrow Y + L
 $$
 
 Therefore computation is inherently kinetic and probabilistic at the level of individual molecular events.
 
-The useful macroscopic result emerges from a very large population of molecules undergoing repeated reaction attempts.
+The useful macroscopic result emerges from a large population of molecules undergoing repeated reaction attempts.
 
 ---
 
@@ -866,13 +776,13 @@ A molecular intermediate can play a critical mechanistic role while remaining at
 Here:
 
 $$
-[e2]_{\max}\approx0.0039\ \text{nM}
+[e2]_{\max} \approx 0.0039\ \mathrm{nM}
 $$
 
-while the main species were present at:
+while the main species were initially present at:
 
 $$
-10\ \text{nM}.
+10\ \mathrm{nM}
 $$
 
 Thus an intermediate may control the entire reaction pathway without accumulating appreciably.
@@ -884,7 +794,7 @@ Thus an intermediate may control the entire reaction pathway without accumulatin
 The intermediate evolves on a timescale of approximately:
 
 $$
-0.026\ \text{s}
+0.026\ \mathrm{s}
 $$
 
 while the overall conversion occurs over hundreds of seconds.
@@ -892,7 +802,7 @@ while the overall conversion occurs over hundreds of seconds.
 This allows the intermediate to be approximated using quasi-steady-state analysis and the full reaction network to be approximated by an effective reaction:
 
 $$
-S+X\rightarrow Y+L.
+S + X \rightarrow Y + L
 $$
 
 ---
@@ -902,25 +812,25 @@ $$
 The detailed mechanism is:
 
 $$
-S+X\rightarrow e2
+S + X \rightarrow e2
 $$
 
-followed by competing:
+followed by the competing reactions:
 
 $$
-e2\rightarrow S+X
+e2 \rightarrow S + X
 $$
 
 and:
 
 $$
-e2\rightarrow Y+L.
+e2 \rightarrow Y + L
 $$
 
 Yet on longer timescales it behaves approximately like:
 
 $$
-S+X\rightarrow Y+L
+S + X \rightarrow Y + L
 $$
 
 with:
@@ -928,13 +838,12 @@ with:
 $$
 k_{\text{eff}}
 \approx
-6.51\times10^{-4}
-\ \text{nM}^{-1}\text{s}^{-1}.
+6.51\times10^{-4}\ \mathrm{nM}^{-1}\mathrm{s}^{-1}
 $$
 
 This is an important idea for molecular computing:
 
-> complex microscopic dynamics can be compiled into simpler effective computational primitives.
+> Complex microscopic dynamics can produce much simpler effective computational primitives.
 
 ---
 
@@ -942,7 +851,7 @@ This is an important idea for molecular computing:
 
 The most important conceptual difference from simple hybridization is that `Y` is released as a **free strand**.
 
-Therefore it can act as a molecular signal:
+Therefore, it can act as a molecular signal:
 
 ```text
 X
@@ -968,8 +877,6 @@ Zhang and Winfree experimentally studied how DNA toeholds control the kinetics o
 
 Their work showed that short single-stranded toeholds can be used to tune molecular reaction kinetics and modeled strand displacement using a small number of kinetic steps.
 
-The paper reports quantitative modeling across many strand-displacement systems and demonstrated that the kinetics can be engineered by modifying toehold interactions.
-
 Our experiment does **not** reproduce their experimental fluorescence measurements, exact nucleotide sequences, or complete experimental conditions.
 
 Instead, we used a Peppercorn domain-level case-study representation inspired by that work to reproduce the underlying strand-displacement mechanism computationally:
@@ -986,10 +893,10 @@ output strand release
 
 Reference:
 
-David Yu Zhang and Erik Winfree.
-**Control of DNA Strand Displacement Kinetics Using Toehold Exchange.**
-*Journal of the American Chemical Society*, 131(47), 17303–17314 (2009).
-DOI: `10.1021/ja906987s`.
+David Yu Zhang and Erik Winfree.  
+**Control of DNA Strand Displacement Kinetics Using Toehold Exchange.**  
+*Journal of the American Chemical Society*, 131(47), 17303–17314 (2009).  
+DOI: `10.1021/ja906987s`
 
 ---
 
@@ -1000,13 +907,13 @@ We can now describe the workflow as:
 ```text
 domain-level DNA design
         ↓
-      Peppercorn
+     Peppercorn
         ↓
 reaction enumeration
         ↓
 bind / open / branch migration
         ↓
-     Pilsimulator
+    Pilsimulator
         ↓
 ODE integration
         ↓
@@ -1042,28 +949,18 @@ ct = 6 nt
 ct = 7 nt
 ```
 
-For each design we can measure:
+For each design, we can measure:
+
+- $k_{\text{bind}}$
+- $k_{\text{open}}$
+- $k_{\text{branch}}$
+- $k_{\text{eff}}$
+- the time required to reach a chosen output concentration
+
+For example:
 
 $$
-k_{\text{bind}}
-$$
-
-$$
-k_{\text{open}}
-$$
-
-$$
-k_{\text{branch}}
-$$
-
-$$
-k_{\text{eff}}
-$$
-
-and the time required to reach a chosen output concentration, for example:
-
-$$
-[Y]=5\ \text{nM}.
+[Y] = 5\ \mathrm{nM}
 $$
 
 This will turn the next experiment from pure observation into our first **DNA circuit engineering experiment**:
