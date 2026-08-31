@@ -130,11 +130,9 @@ $$
 is zero.
 
 Therefore:
-
-$$
-Y = 0
-$$
-
+```text
+[Y](0) = 0
+```
 for the entire simulation.
 
 Only when:
