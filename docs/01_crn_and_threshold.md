@@ -243,15 +243,3 @@ $$
 This demonstrated how continuous chemical concentrations could be interpreted as Boolean values.
 
 However, this threshold was not part of the molecular system itself. It existed only as an external rule used by the observer.
-
-Conceptually, the system is still:
-
-```text
-chemistry
-    ↓
-Y concentration
-    ↓
-external Python/human threshold
-    ↓
-TRUE / FALSE
-```
