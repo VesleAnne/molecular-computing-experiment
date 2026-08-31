@@ -10,25 +10,17 @@ All experiments are **purely computational simulations**. No actual DNA chemistr
 
 ## 1. Environment
 
-The experiments are written in Python and currently use:
+The experiments are written in Python and use libraries:
 
-```bash
-pip install numpy scipy matplotlib
-```
-
-Main libraries:
-
-- `NumPy` — numerical utilities and time grids
-- `SciPy` — numerical integration of differential equations
-- `Matplotlib` — visualization
+- `NumPy` 
+- `SciPy`
+- `Matplotlib`
 
 The main ODE solver is:
 
-```python
-from scipy.integrate import solve_ivp
-```
+`solve_ivp` 
 
-`solve_ivp` solves an **initial value problem**: given the initial concentrations of all molecular species and equations describing how those concentrations change, it computes the system state over time.
+It solves an **initial value problem**: given the initial concentrations of all molecular species and equations describing how those concentrations change, it computes the system state over time.
 
 ---
 
