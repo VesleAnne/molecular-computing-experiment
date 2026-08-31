@@ -4,7 +4,7 @@ This document records the first experiments in a molecular-computing project.
 
 The goal is to build intuition for chemical reaction networks (CRNs), understand how molecular computation differs from ordinary digital computation, and later connect these abstract models to DNA strand-displacement systems.
 
-At this stage, all experiments are **purely computational simulations**. No actual DNA chemistry is being performed.
+All experiments are **purely computational simulations**. No actual DNA chemistry is being performed.
 
 ---
 
