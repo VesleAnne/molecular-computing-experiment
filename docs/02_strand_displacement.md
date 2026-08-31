@@ -122,9 +122,7 @@ $$
 
 At the beginning of the experiment:
 
-$$
-[S](0) = [X](0) = 10\ \mathrm{nM}
-$$
+$[S] $(0)$ = $[X]$ $(0) = 10\ \mathrm{nM}$
 
 therefore:
 
@@ -285,28 +283,7 @@ $$
 
 This does **not** mean that the final strand-displacement yield is limited to 43%.
 
-If the intermediate dissociates, `S` and `X` remain available and may bind again:
-
-```text
-S + X
-  ↓
- e2
-  ↓ failure
-
-S + X
-  ↓
- e2
-  ↓ failure
-
-S + X
-  ↓
- e2
-  ↓ success
-      ↓
-    Y + L
-```
-
-Repeated attempts allow the reaction to continue toward product formation.
+If the intermediate dissociates, `S` and `X` remain available and may bind again. Repeated attempts allow the reaction to continue toward product formation.
 
 ---
 
@@ -340,21 +317,15 @@ This simplified effective model approximates the full Peppercorn/Pilsimulator tr
 
 For equal initial concentrations:
 
-$$
-[X](0) = [S](0) = C_0 = 10\ \mathrm{nM}
-$$
+$[X]$ $(0)$ = $[S]$ $(0) = C_0 = 10\ \mathrm{nM}$
 
 an irreversible second-order approximation gives:
 
-$$
-[X](t) \approx [S](t) \approx \frac{C_0}{1+k_{\text{eff}}C_0t}
-$$
+$[X]$ $(t) \approx [S]$ $(t) \approx \frac{C_0}{1+k_{\text{eff}}C_0t}$
 
 and therefore:
 
-$$
-[Y](t) \approx C_0 - \frac{C_0}{1+k_{\text{eff}}C_0t}
-$$
+$[Y]$ $(t) \approx C_0 - \frac{C_0}{1+k_{\text{eff}}C_0t}$
 
 At:
 
@@ -363,16 +334,12 @@ t = 300\ \mathrm{s}
 $$
 
 this predicts approximately:
+$[Y]$ $(300) \approx 6.61\ \mathrm{nM}$
 
-$$
-[Y](300) \approx 6.61\ \mathrm{nM}
-$$
 
 The Pilsimulator result was approximately:
 
-$$
-[Y](300) \approx 6.6\ \mathrm{nM}
-$$
+$[Y]$ $(300) \approx 6.6\ \mathrm{nM}$
 
 showing close agreement between the simple effective model and the explicitly enumerated reaction network.
 
@@ -384,11 +351,11 @@ Peppercorn generated the reaction network, and Pilsimulator numerically integrat
 
 The simulation tracked:
 
-- $[X](t)$ — invading input strand
-- $[S](t)$ — substrate / gate
-- $[e2](t)$ — transient intermediate
-- $[Y](t)$ — released output strand
-- $[L](t)$ — final displaced complex
+- $[X]$ $(t)$ — invading input strand
+- $[S]$ $(t)$ — substrate / gate
+- $[e2]$ $(t)$ — transient intermediate
+- $[Y]$ $(t)$ — released output strand
+- $[L]$ $(t)$ — final displaced complex
 
 The simulation interval was:
 
@@ -402,17 +369,13 @@ $$
 
 The simulation showed that:
 
-$$
-[X](t) \approx [S](t)
-$$
+$[X]$ $(t) \approx [S]$ $(t)$
 
 because each successful strand displacement consumes one `X` and one `S`.
 
 Similarly:
 
-$$
-[Y](t) \approx [L](t)
-$$
+$[Y]$ $(t) \approx [L]$ $(t)$
 
 because each successful strand-displacement event produces one `Y` and one `L`.
 
@@ -430,15 +393,11 @@ $$
 
 This is consistent with conservation of material:
 
-$$
-[X](t) + [Y](t) \approx 10\ \mathrm{nM}
-$$
+$[X]$ $(t) + [Y]$ $(t) \approx 10\ \mathrm{nM}$
 
 and:
 
-$$
-[S](t) + [L](t) \approx 10\ \mathrm{nM}
-$$
+$[S]$ $(t) + [L]$ $(t) \approx 10\ \mathrm{nM}$
 
 ---
 
